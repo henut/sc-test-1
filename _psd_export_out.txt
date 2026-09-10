@@ -1,0 +1,2 @@
+评论组 bounds: 235 px,352 px,1046 px,756 px
+已导出: _psd_comment.png size=851x444

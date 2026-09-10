@@ -1,0 +1,44 @@
+=== 文档信息 ===
+name=B站SC新版.psd width=1920 px height=1080 px resolution=72
+[0] style1 (kind=undefined, V) bounds: L=0 T=0 R=1920 B=1105 W=1920 H=1105
+  [0] 二维码 (kind=undefined, V) bounds: L=0 T=0 R=1920 B=1093 W=1920 H=1093
+    [0] 你的弹幕值得被看见 (kind=LayerKind.TEXT, V) bounds: L=368 T=935 R=585 B=959 W=217 H=24
+        TEXT: "你的弹幕值得被看见"
+        <读取文字失败: 错误: 要求的属性不存在。>
+    [1] B站APP扫码发送SC (kind=LayerKind.TEXT, V) bounds: L=370 T=882 R=661 B=912 W=291 H=30
+        TEXT: "B站APP扫码发送SC"
+        <读取文字失败: 错误: 要求的属性不存在。>
+    [2] 图层 3 (kind=LayerKind.SMARTOBJECT, H) bounds: L=235 T=867 R=340 B=972 W=105 H=105
+    [3] 图层 13 (kind=LayerKind.NORMAL, V) bounds: L=227 T=859 R=348 B=980 W=121 H=121
+    [4] 图层 3 拷贝 (kind=LayerKind.SMARTOBJECT, V) bounds: L=0 T=0 R=1920 B=1093 W=1920 H=1093
+  [1] 评论 (kind=undefined, V) bounds: L=235 T=352 R=1046 B=756 W=811 H=404
+    [0] 英雄联盟赛事官网，LPL职业联赛，全球总决赛，季中冠军赛，德玛西亚杯，国内外赛事，丰富的英雄联盟赛事资讯与各类大型赛事直播尽在 (kind=LayerKind.TEXT, V) bounds: L=235 T=637 R=1046 B=756 W=811 H=119
+        TEXT: "英雄联盟赛事官网，LPL职业联赛，全球总决赛，季中冠军赛，德玛西亚杯，国内外赛事，丰富的英雄联盟赛事资讯与各类大型赛事直播尽在英雄联盟赛事官方网站（lpl.qq.com）。"
+        <读取文字失败: 错误: 要求的属性不存在。>
+    [1] @无顾清欢 (kind=LayerKind.TEXT, V) bounds: L=564 T=549 R=715 B=580 W=151 H=31
+        TEXT: "@无顾清欢"
+        <读取文字失败: 错误: 要求的属性不存在。>
+    [2] 图层 3 拷贝 2 (kind=LayerKind.SMARTOBJECT, V) bounds: L=561 T=352 R=722 B=512 W=161 H=160
+    [3] 椭圆 1 (kind=LayerKind.SOLIDFILL, V) bounds: L=561 T=352 R=722 B=513 W=161 H=161
+  [2] 产品部分 (kind=undefined, V) bounds: L=1359 T=343 R=1752 B=1105 W=393 H=762
+    [0] 2026_6_18_李宁0803 (kind=LayerKind.SMARTOBJECT, V) bounds: L=1415 T=417 R=1737 B=1105 W=322 H=688
+    [1] 联合logo (kind=undefined, V) bounds: L=1359 T=343 R=1752 B=391 W=393 H=48
+      [0] LPL LOGO NEW (kind=LayerKind.SMARTOBJECT, V) bounds: L=1359 T=346 R=1571 B=388 W=212 H=42
+      [1] 李宁 反白 (kind=LayerKind.SMARTOBJECT, V) bounds: L=1651 T=343 R=1752 B=391 W=101 H=48
+      [2] 直线 1 (kind=LayerKind.SOLIDFILL, V) bounds: L=1610 T=345 R=1613 B=388 W=3 H=43
+[1] BG (kind=undefined, V) bounds: L=0 T=0 R=1920 B=1080 W=1920 H=1080
+  [0] 组 7 (kind=undefined, V) bounds: L=37 T=35 R=1882 B=1044 W=1845 H=1009
+    [0] 组 6 拷贝 (kind=undefined, V) bounds: L=37 T=982 R=1882 B=1044 W=1845 H=62
+      [0] 矩形 3 拷贝 (kind=LayerKind.SOLIDFILL, V) bounds: L=1819 T=982 R=1882 B=1044 W=63 H=62
+      [1] 矩形 3 (kind=LayerKind.SOLIDFILL, V) bounds: L=37 T=982 R=100 B=1044 W=63 H=62
+    [1] 组 6 (kind=undefined, V) bounds: L=37 T=35 R=1882 B=98 W=1845 H=63
+      [0] 矩形 3 拷贝 (kind=LayerKind.SOLIDFILL, V) bounds: L=1819 T=35 R=1882 B=98 W=63 H=63
+      [1] 矩形 3 (kind=LayerKind.SOLIDFILL, V) bounds: L=37 T=35 R=100 B=97 W=63 H=62
+  [1] 装饰 (kind=undefined, V) bounds: L=51 T=266 R=1869 B=1029 W=1818 H=763
+    [0] 直线 3 (kind=LayerKind.SOLIDFILL, V) bounds: L=1224 T=313 R=1227 B=1029 W=3 H=716
+    [1] 直线 2 (kind=LayerKind.SOLIDFILL, V) bounds: L=51 T=266 R=1869 B=269 W=1818 H=3
+  [2] B站SC实时互动墙 (kind=LayerKind.TEXT, V) bounds: L=519 T=86 R=1403 B=198 W=884 H=112
+      TEXT: "B站SC实时互动墙"
+      <读取文字失败: 错误: 要求的属性不存在。>
+  [3] 曲线 1 (kind=LayerKind.CURVES, V) bounds: L=0 T=0 R=1920 B=1080 W=1920 H=1080
+  [4] 图层 12 (kind=LayerKind.NORMAL, V) bounds: L=0 T=0 R=1920 B=1080 W=1920 H=1080

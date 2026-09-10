@@ -1,23 +1,25 @@
 <!DOCTYPE html>
-<html lang="zh-Hans" data-page-node-id="hJ5RZ3I4DDhKN6JZUtxmpm">
-<head data-page-node-id="wS4RakG0M0LI85neBuzYk6">
+<html lang="zh-Hans">
+<head>
   <!-- 关键修复:请求 B 站头像外链时不发送 Referer,避免被 B 站 CDN 防盗链(403)拒绝 -->
   <meta name="referrer" content="no-referrer">
-  <meta charset="UTF-8" data-page-node-id="gonwVVkMEqszfnYf6VEx9N">
+  <meta charset="UTF-8">
   <title>B站SC上墙活动 — 上B站,看LPL</title>
-  <meta name="viewport" content="width=1280" data-page-node-id="JXqEnHywQWMIaXgxCINX3U">
+  <meta name="viewport" content="width=1280">
   <style>
-    /* —— 引入本地字体 —— */
-    /* 昵称用 Heavy(最粗档) */
+    /* ===========================================================
+       本地字体嵌入(按 PSD 实测字体)
+         · 昵称    → LPL HEI Heavy
+         · SC 内容 → LPL HEI Extra
+       =========================================================== */
     @font-face {
       font-family: "LPL HEI Heavy";
       src: url("./front/LPL HEI Heavy.ttf") format("truetype");
       font-display: swap;
     }
-    /* SC 内容用 Book(常规档) */
     @font-face {
-      font-family: "LPL HEI Book";
-      src: url("./front/LPL HEI Book.ttf") format("truetype");
+      font-family: "LPL HEI Extra";
+      src: url("./front/LPL HEI Extra.ttf") format("truetype");
       font-display: swap;
     }
 
@@ -44,19 +46,23 @@
     }
 
     /* ===========================================================
-       上墙卡片轮播区 (原页面 left:160, top:366, 921×596)
-       内部三个模块位置按当前截图实测 (px):
-         头像:   x=340, y=  0,  w=240, h=240  (圆角矩形,顶部对齐)
-         昵称:   x=340, y=255,  w=240, h=105  (粗体大字,水平居中)
-         SC内容: x=  0, y=405,  w=921, h=191  (满宽铺底,水平居中)
+       评论组  —— 位置/尺寸全部取自 PSD 实测绝对坐标
+         PSD「评论」组 bounds : L=235  T=352  R=1046  B=756
+
+         头像    : L=561  T=352  R=722  B=512   → 161 × 160  圆形
+         昵称    : L=564  T=549  R=715  B=580   → 151 ×  31  居中单行
+         SC 内容 : L=235  T=637  R=1046 B=756   → 811 × 119  居中 3 行
+
+         .fanwall 直接落在 PSD 组坐标 (235, 352),内部子元素
+         使用「相对组坐标」(绝对坐标 − 235/352),与设计稿逐像素对齐。
        =========================================================== */
     .fanwall {
       position: absolute;
-      left: 160px;
-      top: 366px;
-      width: 921px;
-      height: 596px;
-      overflow: hidden;
+      left: 235px;
+      top: 352px;
+      width: 811px;
+      height: 404px;
+      overflow: visible;
     }
 
     /* 单条卡片(淡入淡出切换) */
@@ -69,17 +75,17 @@
     }
     .fan-card.active { opacity: 1; pointer-events: auto; }
 
-    /* —— 模块 1:头像(圆形,贴近参考图) —— */
+    /* —— 模块 1:头像 —— PSD 161×160,相对组坐标 (326, 0) —— */
     .fan-avatar {
       position: absolute;
-      left: 340px;
+      left: 326px;
       top: 0px;
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;            /* 圆形头像 */
+      width: 161px;
+      height: 160px;
+      border-radius: 50%;
       overflow: hidden;
-      background: #000;
-      box-shadow: 0 10px 30px rgba(0,0,0,.55);
+      background: #0d2a63;
+      box-shadow: 0 8px 22px rgba(0,0,0,.45);
     }
     .fan-avatar img {
       width: 100%;
@@ -92,80 +98,79 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 84px;
+      font-size: 58px;
       font-weight: 800;
       color: #fff;
-      background: linear-gradient(135deg, #7a5cff, #ff5c8a);
+      background: linear-gradient(135deg, #4f7cff, #8f4bff);
     }
 
-    /* —— 模块 2:昵称(单行,满宽完整显示,超长不省略) —— */
+    /* —— 模块 2:昵称 —— 居中单行,超长不省略 —— */
     .fan-name {
       position: absolute;
       left: 0px;
-      top: 255px;
-      width: 921px;      /* 满宽,容纳长昵称 */
-      height: 105px;
+      top: 191px;                 /* PSD T=549 − 352 = 197,视觉微调至 191 与头像间距一致 */
+      width: 811px;
+      height: 44px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: "LPL HEI Heavy", "Microsoft YaHei", sans-serif;
-      font-size: 62px;               /* 对应 PSD 62pt(按 72dpi 换算) */
+      font-size: 32px;            /* 对应 PSD 实测昵称字高 31~32px(24pt) */
       font-weight: 800;
-      letter-spacing: 1px;
+      letter-spacing: 0;
       color: #fff;
       text-align: center;
-      line-height: 1.2;
-      /* 单行,不换行,超长也完整显示 */
-      white-space: nowrap;
-      overflow: visible;
-      text-shadow: 0 4px 14px rgba(0,0,0,.7);
+      line-height: 44px;          /* 32 × 1.33 ≈ 42.6,取整 44 与 PSD 行距 31.96pt 视觉一致 */
+      white-space: nowrap;        /* 单行显示 */
+      overflow: visible;          /* 超长不省略、不裁切 */
+      text-shadow: 0 2px 10px rgba(0,0,0,.55);
     }
 
-    /* —— 模块 3:SC 内容(与头像昵称同一中心轴,区域内自适应字号) —— */
+    /* —— 模块 3:SC 内容 —— 811×119,居中多行,超长自适应缩小 —— */
     .fan-msg {
       position: absolute;
       left: 0px;
-      top: 405px;
-      width: 921px;
-      height: 191px;
+      top: 285px;                 /* PSD T=637 − 352 = 285 */
+      width: 811px;
+      height: 119px;
       margin: 0;
-      padding: 0 40px;
-      box-sizing: border-box;
-      font-family: "LPL HEI Book", "Microsoft YaHei", sans-serif;
-      font-size: 45px;               /* 初始按 PSD 45pt;超长由 JS 自动缩小 */
+      padding: 0;
+      font-family: "LPL HEI Extra", "Microsoft YaHei", sans-serif;
+      font-size: 26px;            /* 对应 PSD 实测 SC 字高 26px(12pt) */
       font-weight: 400;
-      line-height: 1.35;
+      line-height: 35px;          /* 26 × 1.33 ≈ 34.6,取整 35 对应 PSD 行距 15.98pt 的两倍行高 */
       color: #fff;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 8px rgba(0,0,0,.65);
+      letter-spacing: 0;
+      text-align: center;
+      text-shadow: 0 2px 8px rgba(0,0,0,.55);
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      overflow: hidden;           /* 配合 JS 自适应,防止溢出 */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;    /* 内容不足 3 行时垂直居中 */
+    }
+    .fan-msg-line {
+      flex: none;
+      width: 100%;
       text-align: center;
       word-break: break-word;
       overflow-wrap: anywhere;
-      overflow: hidden;              /* 防溢出,配合 JS 自适应 */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
     }
-    .fan-msg-line { flex: none; width: 100%; text-align: center; word-break: break-word; overflow-wrap: anywhere; }
   </style>
 </head>
-<body data-page-node-id="bTsMreozDxSbnyooEuKfMX">
-  <main class="stage" aria-label="B站SC上墙活动" data-page-node-id="1LsHidzbvhGJHcFtSzDYko">
+<body>
+  <main class="stage" aria-label="B站SC上墙活动">
 
     <!--
-      原页面的背景图(bg.png)已包含:
-        · 顶部标题"B站SC实时上墙"
-        · 中部水平分隔线
-        · 右下 LPL logo + 二维码 + 文案
-        · 四角白色尖角装饰
-        · 整体上半黑色 / 下半蓝橙渐变
-      以下仅叠加 SC 上墙卡片,3 个模块位置按截图测量固定到 px。
+      背景图 bg.png 已包含:顶部标题、分隔线、LPL logo + 二维码 + 文案、四角装饰。
+      此处仅叠加 SC 上墙评论组,三个模块位置按 PSD 实测坐标逐像素固定。
     -->
 
-    <section class="fanwall" aria-label="SC 上墙卡片" data-page-node-id="PwhJOpled418JOsswgItni">
+    <section class="fanwall" aria-label="SC 上墙卡片">
 
       <!-- 1 · 乆牧_ -->
-      <article class="fan-card active" data-page-node-id="card1">
+      <article class="fan-card active">
         <div class="fan-avatar">
           <img src="https://i1.hdslb.com/bfs/face/418817ce8294c2b442faa74e74f988871182b7ac.jpg" alt="乆牧_ 头像" loading="lazy">
         </div>
@@ -174,7 +179,7 @@
       </article>
 
       <!-- 2 · 満船淸夢 -->
-      <article class="fan-card" data-page-node-id="card2">
+      <article class="fan-card">
         <div class="fan-avatar">
           <img src="https://i0.hdslb.com/bfs/face/2a65d507795ea87b1c54675bf54650086e8b8dbe.jpg" alt="満船淸夢 头像" loading="lazy">
         </div>
@@ -183,7 +188,7 @@
       </article>
 
       <!-- 3 · 临海文卫 -->
-      <article class="fan-card" data-page-node-id="card3">
+      <article class="fan-card">
         <div class="fan-avatar">
           <img src="https://i1.hdslb.com/bfs/face/5d1d1206893141761f1395d6f9de0e14b98bf944.jpg" alt="临海文卫 头像" loading="lazy">
         </div>
@@ -192,7 +197,7 @@
       </article>
 
       <!-- 4 · 卐组pm戌神mio怪人 -->
-      <article class="fan-card" data-page-node-id="card4">
+      <article class="fan-card">
         <div class="fan-avatar">
           <img src="https://i1.hdslb.com/bfs/face/7164ef81d3de992740fca7db33d84c7874cb3f9f.jpg" alt="卐组pm戌神mio怪人 头像" loading="lazy">
         </div>
@@ -201,7 +206,7 @@
       </article>
 
       <!-- 5 · 桜宵夜 -->
-      <article class="fan-card" data-page-node-id="card5">
+      <article class="fan-card">
         <div class="fan-avatar">
           <img src="https://i0.hdslb.com/bfs/face/b1704d57af84b7f8035a984a8a80db5239f9602a.jpg" alt="桜宵夜 头像" loading="lazy">
         </div>
@@ -213,29 +218,30 @@
   </main>
 
   <script>
-    /* —— 上墙卡片轮播:每张停留 3s 后淡出切换 —— */
+    /* —— SC 上墙卡片轮播:每张停留 3s,0.3s 淡入淡出切换 —— */
     (function () {
       const cards = document.querySelectorAll('.fan-card');
       const DISPLAY_MS = 3000;
+      const BASE_SIZE = 26;      // PSD 实测 SC 字号基准
+      const BASE_LH   = 35;      // PSD 实测 SC 行高基准
       let idx = 0;
       const N = cards.length;
 
-      /* SC 内容自适应:超长则缩小字号,保证完整显示在固定区域内 */
+      /* SC 内容自适应:超出固定区域则逐 px 缩小字号,保证完整显示 */
       function fitMsg(msgEl) {
         const maxHeight = msgEl.clientHeight;
-        msgEl.style.fontSize = '45px';               // 初始按 PSD 45pt
-        let size = 45;
-        // 反复缩小,直到内容能完全放进容器
+        let size = BASE_SIZE;
+        msgEl.style.fontSize = size + 'px';
+        msgEl.style.lineHeight = BASE_LH + 'px';
         while (size > 10 && msgEl.scrollHeight > maxHeight + 1) {
           size -= 1;
           msgEl.style.fontSize = size + 'px';
+          msgEl.style.lineHeight = Math.round(size * (BASE_LH / BASE_SIZE)) + 'px';
         }
-        msgEl.style.lineHeight = '1.35';
       }
 
       function show(i) {
         cards.forEach((c, k) => c.classList.toggle('active', k === i));
-        // 显示当前卡后,让其 SC 文本自适应字号
         const msg = cards[i].querySelector('.fan-msg');
         if (msg) fitMsg(msg);
         idx = i;
